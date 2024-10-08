@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: potato-mall-back-kotlin
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/potato_mall
+    username: root
+    password: q1w2e3r4
