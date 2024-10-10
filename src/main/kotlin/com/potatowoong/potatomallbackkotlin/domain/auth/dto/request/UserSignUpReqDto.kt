@@ -1,4 +1,4 @@
-package com.potatowoong.potatomallbackkotlin.domain.auth.dto.response
+package com.potatowoong.potatomallbackkotlin.domain.auth.dto.request
 
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size

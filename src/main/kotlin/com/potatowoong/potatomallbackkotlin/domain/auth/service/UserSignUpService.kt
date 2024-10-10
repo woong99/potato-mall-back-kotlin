@@ -1,6 +1,6 @@
 package com.potatowoong.potatomallbackkotlin.domain.auth.service
 
-import com.potatowoong.potatomallbackkotlin.domain.auth.dto.response.UserSignUpReqDto
+import com.potatowoong.potatomallbackkotlin.domain.auth.dto.request.UserSignUpReqDto
 import com.potatowoong.potatomallbackkotlin.domain.auth.entity.Member
 import com.potatowoong.potatomallbackkotlin.domain.auth.repository.MemberRepository
 import com.potatowoong.potatomallbackkotlin.global.exception.CustomException
@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserSignUpService(
-    val memberRepository: MemberRepository,
-    val passwordEncoder: PasswordEncoder
+    private val memberRepository: MemberRepository,
+    private val passwordEncoder: PasswordEncoder
 ) {
 
     /**

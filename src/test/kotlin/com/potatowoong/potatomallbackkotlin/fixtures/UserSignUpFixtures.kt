@@ -1,6 +1,6 @@
 package com.potatowoong.potatomallbackkotlin.fixtures
 
-import com.potatowoong.potatomallbackkotlin.domain.auth.dto.response.UserSignUpReqDto
+import com.potatowoong.potatomallbackkotlin.domain.auth.dto.request.UserSignUpReqDto
 
 fun createUserSignUpReqDto(
     userId: String = "테스트",

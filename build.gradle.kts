@@ -1,4 +1,5 @@
 object Versions {
+    const val JWT_VERSION = "0.12.6"
     const val P6SPY_VERSION = "1.9.2"
     const val KOTLIN_LOGGING_VERSION = "7.0.0"
     const val MOCKK_VERSION = "1.13.12"
@@ -8,10 +9,18 @@ object Versions {
 plugins {
     kotlin("jvm") version "1.9.25"
     kotlin("plugin.spring") version "1.9.25"
+    kotlin("plugin.jpa") version "1.9.25"
+    kotlin("plugin.allopen") version "1.9.25"
     id("org.springframework.boot") version "3.3.4"
     id("io.spring.dependency-management") version "1.1.6"
-    kotlin("plugin.jpa") version "1.9.25"
-    id("java")
+}
+
+apply(plugin = "kotlin-jpa")
+
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.Embeddable")
+    annotation("javax.persistence.MappedSuperclass")
 }
 
 group = "com.potatowoong"
@@ -53,6 +62,11 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
+    // JWT
+    implementation("io.jsonwebtoken:jjwt-api:${Versions.JWT_VERSION}")
+    implementation("io.jsonwebtoken:jjwt-impl:${Versions.JWT_VERSION}")
+    implementation("io.jsonwebtoken:jjwt-jackson:${Versions.JWT_VERSION}")
+
     // Log4j2
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
 
@@ -62,9 +76,8 @@ dependencies {
     // Kotlin-Logging
     implementation("io.github.oshai:kotlin-logging-jvm:${Versions.KOTLIN_LOGGING_VERSION}")
 
-    // Lombok
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
+    // Redis
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
     // MariaDB
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
@@ -91,17 +104,3 @@ kotlin {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
-
-sourceSets {
-    main {
-        java {
-            srcDirs("src/main/kotlin")
-        }
-    }
-    test {
-        java {
-            srcDirs("src/test/kotlin")
-        }
-    }
-}
-

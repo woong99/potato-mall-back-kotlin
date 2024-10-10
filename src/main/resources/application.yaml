@@ -9,8 +9,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-#    properties:
-#      hibernate:
-#        format_sql: true
-#        highlight_sql: true
-#        show_sql: true
+  data:
+    redis: # Redis 설정
+      port: 6379
+      host: localhost
+jwt: # JWT 토큰 설정
+  secret: 32d17d3712c57ed22839a31b4519a6dd3aaf5b9b6a983644fb65efcff2b3ec4578b08f4b7e9c630d73041a779e62a70406bfb5382428b6d57ec8b2d854b85028
+  access-token-expiration: 1800 # 30분
+  refresh-token-expiration: 604800 # 7일
