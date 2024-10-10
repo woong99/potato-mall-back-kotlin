@@ -1,4 +1,4 @@
-package com.potatowoong.potatomallbackkotlin.global.security
+package com.potatowoong.potatomallbackkotlin.global.config.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
